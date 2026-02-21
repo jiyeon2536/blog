@@ -1,0 +1,77 @@
+---
+import GlassCard from './GlassCard.astro';
+import GlassTag from './GlassTag.astro';
+import { base } from '../utils/base';
+
+interface Props {
+  title: string;
+  date: Date;
+  category: string;
+  tags: string[];
+  slug: string;
+}
+
+const { title, date, category, tags, slug } = Astro.props;
+const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<article class="card-wrapper" data-category={category} data-tags={tags.join(',')}>
+  <GlassCard>
+    <div class="card-link">
+      <h2 class="card-title"><a href={`${base}article/${slug}`}>{title}</a></h2>
+      <div class="card-meta">
+        <a href={`${base}category/${encodeURIComponent(category)}`} class="category">{category}</a>
+        <time datetime={date.toISOString()}>{formattedDate}</time>
+      </div>
+      <div class="card-tags">
+        {tags.map((tag) => (
+          <GlassTag tag={tag} />
+        ))}
+      </div>
+    </div>
+  </GlassCard>
+</article>
+
+<style>
+  .card-wrapper {
+    list-style: none;
+  }
+
+  .card-link {
+    display: block;
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .card-title a {
+    color: inherit;
+  }
+
+  .card-title a:hover {
+    color: var(--accent-hover);
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-meta .category {
+    color: var(--accent-hover);
+    font-weight: 500;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

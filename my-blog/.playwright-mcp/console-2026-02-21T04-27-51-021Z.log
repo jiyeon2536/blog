@@ -1,0 +1,12 @@
+[  135288ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  135311ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4321/favicon.ico:0
+[  143138ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  157519ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  171392ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  190447ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  203205ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  210897ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  216155ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/:0
+[  425240ms] [ERROR] WebSocket connection to 'ws://localhost:4323/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/@vite/client:1766
+[  426244ms] [ERROR] WebSocket connection to 'ws://localhost:4323/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/@vite/client:1766
+[  427246ms] [ERROR] WebSocket connection to 'ws://localhost:4323/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:4323/@vite/client:1766

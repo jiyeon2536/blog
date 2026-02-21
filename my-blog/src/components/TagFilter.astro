@@ -1,0 +1,28 @@
+---
+import GlassTag from './GlassTag.astro';
+
+interface Props {
+  tags: string[];
+  activeTag?: string;
+  id?: string;
+}
+
+const { tags, activeTag = '', id = 'tag-filter' } = Astro.props;
+const uniqueTags = [...new Set(tags)].sort();
+---
+
+<div class="tag-filter" id={id}>
+  <GlassTag tag="" label="All" active={!activeTag} asButton />
+  {uniqueTags.map((tag) => (
+    <GlassTag tag={tag} active={activeTag === tag} asButton />
+  ))}
+</div>
+
+<style>
+  .tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+</style>

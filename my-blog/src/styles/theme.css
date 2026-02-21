@@ -1,0 +1,43 @@
+/* Liquid glass UI – color tokens and glass variables */
+
+:root {
+  /* Base */
+  --bg: #e8f5e9;
+  --bg-gradient: linear-gradient(160deg, #e8f5e9 0%, #f1f8e9 50%, #e0f2f1 100%);
+  --text: #1b5e20;
+  --text-muted: #2e7d32;
+  --accent: #f8bbd9;
+  --accent-hover: #f48fb1;
+  --accent-soft: rgba(248, 187, 217, 0.35);
+
+  /* Glass surfaces – light */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-border-subtle: rgba(27, 94, 32, 0.08);
+  --glass-shadow: 0 4px 24px rgba(27, 94, 32, 0.06);
+  --glass-blur: 12px;
+  --glass-radius: 20px;
+  --glass-radius-sm: 12px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: 0.2s var(--ease-out);
+  --transition-smooth: 0.3s var(--ease-out);
+}
+
+.dark {
+  --bg: #0f1810;
+  --bg-gradient: linear-gradient(160deg, #0f1810 0%, #152015 50%, #0d1210 100%);
+  --text: #c8e6c9;
+  --text-muted: #a5d6a7;
+  --accent: #f8bbd9;
+  --accent-hover: #f48fb1;
+  --accent-soft: rgba(248, 187, 217, 0.2);
+
+  /* Glass – dark */
+  --glass-bg: rgba(36, 56, 36, 0.6);
+  --glass-border: rgba(200, 230, 201, 0.08);
+  --glass-border-subtle: rgba(0, 0, 0, 0.2);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --glass-blur: 14px;
+}

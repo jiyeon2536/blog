@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GlassCard from '../components/GlassCard.astro';
+---
+
+<Layout title="Profile">
+  <h1 class="page-title">Profile</h1>
+
+  <GlassCard>
+    <div class="resume-skeleton">
+      <section class="resume-section">
+        <h2 class="resume-heading">About</h2>
+        <div class="skeleton-block"></div>
+      </section>
+
+      <section class="resume-section">
+        <h2 class="resume-heading">Experience</h2>
+        <div class="skeleton-item">
+          <div class="skeleton-line short"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line medium"></div>
+        </div>
+        <div class="skeleton-item">
+          <div class="skeleton-line short"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line medium"></div>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2 class="resume-heading">Education</h2>
+        <div class="skeleton-item">
+          <div class="skeleton-line short"></div>
+          <div class="skeleton-line medium"></div>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2 class="resume-heading">Skills</h2>
+        <div class="skeleton-tags">
+          <span class="skeleton-tag"></span>
+          <span class="skeleton-tag"></span>
+          <span class="skeleton-tag"></span>
+          <span class="skeleton-tag"></span>
+        </div>
+      </section>
+    </div>
+  </GlassCard>
+</Layout>
+
+<style>
+  .page-title {
+    margin: 0 0 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .resume-skeleton {
+    padding: 1.5rem;
+  }
+
+  .resume-section {
+    margin-bottom: 2rem;
+  }
+
+  .resume-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .resume-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .skeleton-block {
+    height: 80px;
+    background: var(--glass-border-subtle);
+    border-radius: 8px;
+    opacity: 0.6;
+  }
+
+  .skeleton-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border-subtle);
+  }
+
+  .skeleton-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .skeleton-line {
+    height: 12px;
+    background: var(--glass-border-subtle);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+  }
+
+  .skeleton-line.short {
+    width: 40%;
+  }
+
+  .skeleton-line.medium {
+    width: 70%;
+  }
+
+  .skeleton-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skeleton-tag {
+    width: 60px;
+    height: 28px;
+    background: var(--glass-border-subtle);
+    border-radius: 8px;
+    opacity: 0.6;
+  }
+</style>

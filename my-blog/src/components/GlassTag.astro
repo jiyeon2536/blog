@@ -1,0 +1,68 @@
+---
+interface Props {
+  tag: string;
+  label?: string;
+  active?: boolean;
+  asButton?: boolean;
+}
+
+const { tag, label, active = false, asButton = false } = Astro.props;
+const display = label ?? (tag || 'All');
+---
+
+{asButton ? (
+  <button
+    type="button"
+    class="glass-tag glass-tag-btn tag-btn"
+    data-tag={tag}
+    data-active={active}
+  >
+    {display}
+  </button>
+) : (
+  <span class="glass-tag">{display}</span>
+)}
+
+<style>
+  .glass-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.65rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text);
+    border: 1px solid var(--glass-border-subtle);
+    border-radius: 20px;
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .glass-tag-btn {
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 0.875rem;
+    padding: 0.4rem 0.9rem;
+  }
+
+  .glass-tag-btn:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .glass-tag-btn[data-active='true'] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+
+  .dark .glass-tag {
+    background: var(--glass-bg);
+  }
+
+  .dark .glass-tag-btn:hover,
+  .dark .glass-tag-btn[data-active='true'] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+</style>

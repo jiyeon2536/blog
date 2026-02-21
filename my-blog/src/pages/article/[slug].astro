@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GlassTag from '../../components/GlassTag.astro';
+import { base } from '../../utils/base';
+import { getCollection, getEntry, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id.replace(/\.md$/, '') || post.id } }));
+}
+
+const { slug } = Astro.params;
+const entryId = slug?.replace(/\.md$/, '') ?? '';
+const entry = await getEntry('blog', entryId);
+if (!entry) {
+  return Astro.redirect(`${base}404`);
+}
+
+const { Content } = await render(entry);
+const { title, date, category, tags } = entry.data;
+const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout title={`${title} - Blog`}>
+  <a href={base} class="back-link">← Back to home</a>
+
+  <article class="article surface-article">
+    <header class="article-header">
+      <h1 class="article-title">{title}</h1>
+      <div class="article-meta">
+        <a href={`${base}category/${encodeURIComponent(category)}`} class="category">{category}</a>
+        <time datetime={date.toISOString()}>{formattedDate}</time>
+      </div>
+      <div class="article-tags">
+        {tags.map((tag) => (
+          <GlassTag tag={tag} />
+        ))}
+      </div>
+    </header>
+
+    <div class="article-content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .back-link:hover {
+    color: var(--accent-hover);
+  }
+
+  .surface-article {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border-subtle);
+    box-shadow: var(--glass-shadow), 0 1px 0 var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 2.5rem;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border-subtle);
+  }
+
+  .article-title {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .article-meta .category {
+    color: var(--accent-hover);
+    font-weight: 500;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .article-content {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .article-content :global(h2) {
+    margin: 2.25rem 0 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .article-content :global(h3) {
+    margin: 1.75rem 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .article-content :global(p) {
+    margin: 0 0 1rem;
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin: 0 0 1.2rem;
+    padding-left: 1.25rem;
+  }
+
+
+  .article-content :global(li) {
+    margin-bottom: 0rem;
+  }
+
+  .article-content :global(code) {
+    font-size: 0.9em;
+    padding: 0.15rem 0.4rem;
+    background: var(--glass-border-subtle);
+    border-radius: 8px;
+  }
+
+  .article-content :global(pre) {
+    overflow-x: auto;
+    padding: 1rem;
+    background: var(--glass-border-subtle);
+    border-radius: 8px;
+    margin: 1.25rem 0;
+  }
+
+  .article-content :global(pre code) {
+    font-size: 0.875rem;
+    padding: 0;
+    background: none;
+  }
+
+  .article-content :global(blockquote) {
+    margin: 1.25rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid var(--accent);
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .surface-article {
+      padding: 1.5rem;
+    }
+
+    .article-title {
+      font-size: 1rem;
+    }
+  }
+</style>
