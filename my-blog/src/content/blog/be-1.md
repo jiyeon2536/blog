@@ -2,7 +2,7 @@
 title: 메타는 청소년의 소셜미디어 중독을 고의로 설계했을까? | CNN 뉴스로 공부하는 비즈니스 영어
 date: 2025-02-23
 category: 비즈니스 영어
-tags: ['english', '뉴스', 'social-media']
+tags: ['english', '뉴스', 'social-media', 'tech', 'business']
 ---
 
 <a href="https://edition.cnn.com/2026/02/22/tech/social-media-addiction-trial-tobacco-moment" target="_blank">원본 기사 보기</a>
